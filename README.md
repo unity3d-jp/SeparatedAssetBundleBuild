@@ -4,7 +4,7 @@ Workaround for long time to build many AssetBundles.
 ## 発生している問題について
 Unity 5.5にて、ビルド対象のAssetBundle数が増えれば増えるほど、ビルド時間が指数的に長くなるという問題が起きています。<br />
 
-図1.AssetBundle数とビルド時間の関係<br />
+図1.AssetBundle数とBuild時間の関係<br />
 
 ![Alt text](/doc/img/AssetBundleBuildTime.png)
 
