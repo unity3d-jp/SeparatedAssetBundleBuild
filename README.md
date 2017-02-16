@@ -16,7 +16,7 @@ https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building
 
 ### 使用方法
 1). SeparatedAssetBundleBuild.unitypackage をインポートします。<br />
-2). プロジェクト内にある "BuildPipeline.BuildAssetBundles" を "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" に置き換えてください。<br />
+2). Project内の "BuildPipeline.BuildAssetBundles" -> "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" と置き換えてください。<br />
 
 
 ### サンプルについて
