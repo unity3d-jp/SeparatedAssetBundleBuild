@@ -1,33 +1,33 @@
 # SeparatedAssetBundleBuild
 Workaround for long time to build many AssetBundles.
 
-## ”­¶‚µ‚Ä‚¢‚é–â‘è‚É‚Â‚¢‚Ä
-Unity 5.5‚É‚ÄAƒrƒ‹ƒh‘ÎÛ‚ÌAssetBundle”‚ª‘‚¦‚ê‚Î‘‚¦‚é‚Ù‚ÇAƒrƒ‹ƒhŠÔ‚ªw”“I‚É’·‚­‚È‚é‚Æ‚¢‚¤–â‘è‚ª‹N‚«‚Ä‚¢‚Ü‚·B<br />
+## ç™ºç”Ÿã—ã¦ã„ã‚‹å•é¡Œã«ã¤ã„ã¦
+Unity 5.5ã«ã¦ã€ãƒ“ãƒ«ãƒ‰å¯¾è±¡ã®AssetBundleæ•°ãŒå¢—ãˆã‚Œã°å¢—ãˆã‚‹ã»ã©ã€ãƒ“ãƒ«ãƒ‰æ™‚é–“ãŒæŒ‡æ•°çš„ã«é•·ããªã‚‹ã¨ã„ã†å•é¡ŒãŒèµ·ãã¦ã„ã¾ã™ã€‚<br />
 
-}1.AssetBundle”‚Æƒrƒ‹ƒhŠÔ‚ÌŠÖŒW<br />
+å›³1.AssetBundleæ•°ã¨ãƒ“ãƒ«ãƒ‰æ™‚é–“ã®é–¢ä¿‚<br />
 
 ![Alt text](/doc/img/AssetBundleBuildTime.png)
 
 Issue Tracker:<br />
 https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building-time-when-building-multiple-small-asset-bundles<br />
 
-## ‚±‚ÌƒvƒƒWƒFƒNƒg‚É‚Â‚¢‚Ä
-‚±‚ÌƒvƒƒWƒFƒNƒg‚ÍA"BuildPipeline.BuildAssetBundles"‚ğ‰Â”\‚ÈŒÀ‚è•ªŠ„‚µ‚ÄŒÄ‚Ño‚·–‚Åƒrƒ‹ƒhŠÔ‚ğ’Zk‚·‚é‚½‚ß‚ÌƒvƒƒWƒFƒNƒg‚Å‚·B
+## ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«ã¤ã„ã¦
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã€"BuildPipeline.BuildAssetBundles"ã‚’å¯èƒ½ãªé™ã‚Šåˆ†å‰²ã—ã¦å‘¼ã³å‡ºã™äº‹ã§ãƒ“ãƒ«ãƒ‰æ™‚é–“ã‚’çŸ­ç¸®ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚
 
-### g—p•û–@
-1). SeparatedAssetBundleBuild.unitypackage ‚ğƒCƒ“ƒ|[ƒg‚µ‚Ü‚·B<br />
-2). ƒvƒƒWƒFƒNƒg“à‚É‚ ‚é "BuildPipeline.BuildAssetBundles" ‚ğ "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" ‚É’u‚«Š·‚¦‚Ä‚­‚¾‚³‚¢B<br />
+### ä½¿ç”¨æ–¹æ³•
+1). SeparatedAssetBundleBuild.unitypackage ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚<br />
+2). ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå†…ã«ã‚ã‚‹ "BuildPipeline.BuildAssetBundles" ã‚’ "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" ã«ç½®ãæ›ãˆã¦ãã ã•ã„ã€‚<br />
 
 
-### ƒTƒ“ƒvƒ‹‚É‚Â‚¢‚Ä
-ƒeƒXƒg—p‚ÉƒTƒ“ƒvƒ‹‚ğ—pˆÓ‚µ‚Ü‚µ‚½B<br />
-Menu‚Ì"Sample/SampleWindow"‚ğŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢B<br />
+### ã‚µãƒ³ãƒ—ãƒ«ã«ã¤ã„ã¦
+ãƒ†ã‚¹ãƒˆç”¨ã«ã‚µãƒ³ãƒ—ãƒ«ã‚’ç”¨æ„ã—ã¾ã—ãŸã€‚<br />
+Menuã®"Sample/SampleWindow"ã‚’å‘¼ã³å‡ºã—ã¦ãã ã•ã„ã€‚<br />
 
-![Alt text](/doc/img/AssetBundleBuildTime.png) <br />
+![Alt text](/doc/img/SampleWindow.png) <br />
 <br />
-1).ƒeƒXƒg‚Ég—p‚·‚éƒAƒZƒbƒgƒoƒ“ƒhƒ‹”‚ğƒZƒbƒg‚µ‚Ü‚·B<br />
-2).ƒeƒXƒg—p‚Ìƒf[ƒ^‚ğì¬‚µ‚Ü‚·B<br />
-3).]—ˆ‚Ì‚â‚è•û‚ÅAssetBundle‚ğì¬‚µ‚Ü‚·B<br />
-4).¡‰ñ—pˆÓ‚µ‚½•û–@‚ÅAAssetBundle‚ğì¬‚µ‚Ü‚·B<br />
+1).ãƒ†ã‚¹ãƒˆã«ä½¿ç”¨ã™ã‚‹ã‚¢ã‚»ãƒƒãƒˆãƒãƒ³ãƒ‰ãƒ«æ•°ã‚’ã‚»ãƒƒãƒˆã—ã¾ã™ã€‚<br />
+2).ãƒ†ã‚¹ãƒˆç”¨ã®ãƒ‡ãƒ¼ã‚¿ã‚’ä½œæˆã—ã¾ã™ã€‚<br />
+3).å¾“æ¥ã®ã‚„ã‚Šæ–¹ã§AssetBundleã‚’ä½œæˆã—ã¾ã™ã€‚<br />
+4).ä»Šå›ç”¨æ„ã—ãŸæ–¹æ³•ã§ã€AssetBundleã‚’ä½œæˆã—ã¾ã™ã€‚<br />
 
 
