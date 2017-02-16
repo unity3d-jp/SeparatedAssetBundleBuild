@@ -14,6 +14,10 @@ https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building
 ## このプロジェクトについて
 このプロジェクトは、"BuildPipeline.BuildAssetBundles"を可能な限り分割して呼び出す事でビルド時間を短縮するためのプロジェクトです。
 
+図2.このプロジェクト使用時のAssetBundle数とBuild時間の関係
+![Alt text](/doc/img/WorkAroundBuildTime.png)
+
+
 ### 使用方法
 1). SeparatedAssetBundleBuild.unitypackage をインポートします。<br />
 2). Project内の "BuildPipeline.BuildAssetBundles" -> "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" と置き換えてください。<br />
