@@ -71,6 +71,7 @@ namespace Sample
 
             if (isSeparate)
             {
+                UTJ.SeparatedAssetBundleBuild.ReservedVariants = testVariants;
                 UTJ.SeparatedAssetBundleBuild.BuildAssetBundles(outputDir, assetBundleBuildOption, targetPlatform);
             }
             else
@@ -152,7 +153,7 @@ namespace Sample
                 {
                     continue;
                 }
-                importer.assetBundleName = "test_with_variant" + i;
+                importer.assetBundleName = "test" + i;
                 importer.assetBundleVariant = variant;
                 importer.textureType = TextureImporterType.GUI;
                 importer.mipmapEnabled = false;
