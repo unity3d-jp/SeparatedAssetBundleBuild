@@ -1,37 +1,39 @@
 # SeparatedAssetBundleBuild
 Workaround for long time to build many AssetBundles.
 
-## 発生している問題について
-Unity 5.5にて、ビルド対象のAssetBundle数が増えれば増えるほど、ビルド時間が指数的に長くなるという問題が起きています。<br />
+Read this in other languages: English, [日本語](README.ja.md)<br />
+日本語版はコチラを参照してください。
 
-図1.AssetBundle数とBuild時間の関係<br />
+## about Issue
+At Unity 5.5 , the build time of AssetBundle is increasing exponentially by the number of AssetBundle.<br />
 
-![Alt text](/doc/img/AssetBundleBuildTime.png)
+Graph1.releation between the number of AssetBundles and building time<br />
 
 Issue Tracker:<br />
 https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building-time-when-building-multiple-small-asset-bundles<br />
 
-## このプロジェクトについて
-このプロジェクトは、"BuildPipeline.BuildAssetBundles"を可能な限り分割して呼び出す事でビルド時間を短縮するためのプロジェクトです。
+## about this
+This is a workaround project.<br />
 
-図2.このプロジェクト使用時のAssetBundle数とBuild時間の関係
-![Alt text](/doc/img/WorkAroundBuildTime.png)
+To make the build time shorter, it is effective way to separate calling "BuildPipeline.BuildAssetBundles".
 
-
-### 使用方法
-1). SeparatedAssetBundleBuild.unitypackage をインポートします。<br />
-2). Project内の "BuildPipeline.BuildAssetBundles" -> "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles" と置き換えてください。<br />
+Graph2.this workaround
+![Alt text](/doc/img/AssetBundleBuildTime.png)
 
 
-### サンプルについて
-テスト用にサンプルを用意しました。<br />
-Menuの"Sample/SampleWindow"を呼び出してください。<br />
+### How to use this
+1). Import the "SeparatedAssetBundleBuild.unitypackage".<br />
+2). Replace "BuildPipeline.BuildAssetBundles" to "UTJ.SeparatedAssetBundleBuild.BuildAssetBundles".<br />
+
+
+### About sample 
+We prepared test case.<br />
+Call "Sample/SampleWindow" from menu.<br />
 
 ![Alt text](/doc/img/SampleWindow.png) <br />
 <br />
-1).テストに使用するアセットバンドル数をセットします。<br />
-2).テスト用のデータを作成します。<br />
-3).従来のやり方でAssetBundleを作成します。<br />
-4).今回用意した方法で、AssetBundleを作成します。<br />
-
+1)The number of datas.<br />
+2).Create test datas.<br />
+3).Build assetBundle without this workaround.<br />
+4).Build assetBundle with this workaround.<br />
 
