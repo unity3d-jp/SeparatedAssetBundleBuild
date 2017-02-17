@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Sample
 {
@@ -9,6 +10,7 @@ namespace Sample
     {
         private const string outputDir = "Test";
         private int testDataNum = 1000;
+        private List<string> testVariants = new List<string>();
 
         [MenuItem("Samples/SampleWindow")]
         public static void Create()
@@ -20,10 +22,28 @@ namespace Sample
         {
             EditorGUILayout.LabelField("Create Test Data");
             this.testDataNum = EditorGUILayout.IntField("Number of testdata",this.testDataNum);
+            int newCount = Mathf.Max(0, EditorGUILayout.IntField("Number of variants", this.testVariants.Count));
+            while (newCount < this.testVariants.Count)
+                this.testVariants.RemoveAt(this.testVariants.Count - 1);
+            while (newCount > this.testVariants.Count)
+                this.testVariants.Add(null);
+            for(int i = 0; i < this.testVariants.Count; i++)
+            {
+                this.testVariants[i] = EditorGUILayout.TextField(this.testVariants[i]);
+            }
+
             if (GUILayout.Button("CreateTestData"))
             {
-                this.CreateDataset(this.testDataNum);
+                if (this.testVariants.Count > 0)
+                {
+                    this.CreateDatasetWithVariants(this.testDataNum, this.testVariants.ToArray());
+                }
+                else
+                {
+                    this.CreateDataset(this.testDataNum);
+                }
             }
+
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("BuildAssetBundles");
             if (GUILayout.Button("BuildPipeline.BuildAssetBundles"))
@@ -78,23 +98,62 @@ namespace Sample
             }
             Directory.CreateDirectory(testDir);
 
-            for (int i = 0; i < num; ++i)
-            {
-                string targetPath = Path.Combine(testDir, i + ".png");
-                System.IO.File.Copy("Assets/Sample/origin.png", targetPath);
-            }
+            CreateTestAsset(testDir, num);
+
             AssetDatabase.Refresh();
             AssetDatabase.RemoveUnusedAssetBundleNames();
 
+            SetAssetBundleName(testDir, num);
+        }
+
+        public void CreateDatasetWithVariants(int num, string[] variants)
+        {
+            string testDir = "Assets/Sample/TestBundles";
+
+            if (Directory.Exists(testDir))
+            {
+                Directory.Delete(testDir, true);
+            }
+            Directory.CreateDirectory(testDir);
+
+            for (int i = 0; i < variants.Length; i++)
+            {
+                string targetDirectory = Path.Combine(testDir, variants[i]);
+                Directory.CreateDirectory(targetDirectory);
+                CreateTestAsset(targetDirectory, num);
+            }
+
+            AssetDatabase.Refresh();
+            AssetDatabase.RemoveUnusedAssetBundleNames();
+
+            for (int i = 0; i < variants.Length; i++)
+            {
+                string targetDir = Path.Combine(testDir, variants[i]);
+                SetAssetBundleName(targetDir, num, variants[i]);
+            }
+        }
+
+        private void CreateTestAsset(string targerDirectory, int num)
+        {
             for (int i = 0; i < num; ++i)
             {
-                string targetPath = Path.Combine(testDir, i + ".png");
+                string targetPath = Path.Combine(targerDirectory, i + ".png");
+                System.IO.File.Copy("Assets/Sample/origin.png", targetPath);
+            }
+        }
+
+        private void SetAssetBundleName(string targerDirectory, int num, string variant = null)
+        {
+            for (int i = 0; i < num; ++i)
+            {
+                string targetPath = Path.Combine(targerDirectory, i + ".png");
                 TextureImporter importer = TextureImporter.GetAtPath(targetPath) as TextureImporter;
                 if (importer == null)
                 {
                     continue;
                 }
-                importer.assetBundleName = "test" + i;
+                importer.assetBundleName = "test_with_variant" + i;
+                importer.assetBundleVariant = variant;
                 importer.textureType = TextureImporterType.GUI;
                 importer.mipmapEnabled = false;
             }
