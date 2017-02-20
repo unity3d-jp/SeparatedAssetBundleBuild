@@ -284,7 +284,7 @@ namespace UTJ
                 extension = extension.Substring(1);
                 if (ReservedVariants.Contains(extension))
                 {
-                    assetBundleName = Path.GetFileNameWithoutExtension(assetBundleName);
+                    assetBundleName = Path.Combine(Path.GetDirectoryName(assetBundleName), Path.GetFileNameWithoutExtension(assetBundleName));
                     assetBundleVariant = extension;
                 }
             }
