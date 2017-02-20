@@ -2,6 +2,7 @@
 //#define ASSET_BUNDLE_BUILD_TIME_CHECK
 
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEditor;
@@ -19,6 +20,7 @@ namespace UTJ
 
         // The number of batchingAssetBundleBuilds.
         private const int BulkConvertNum = 300;
+        public static List<string> ReservedVariants = new List<string>(0);
 
         public static AssetBundleBuildsManifest BuildAssetBundles(string outputDir, BuildAssetBundleOptions buildOption, BuildTarget targetPlatform)
         {
@@ -260,12 +262,33 @@ namespace UTJ
         private static AssetBundleBuild CreateAssetBundleBuildFromAssetBundleName(string assetBundleName)
         {
             AssetBundleBuild build = new AssetBundleBuild();
-            build.assetBundleName = assetBundleName;
+
+            string bundleName;
+            string variant;
+            GetAssetBundleNameAndVariantByReservedVariants(assetBundleName, out bundleName, out variant);
+
+            build.assetBundleName = bundleName;
+            build.assetBundleVariant = variant;
             build.assetNames = AssetDatabase.GetAssetPathsFromAssetBundle(assetBundleName);
             return build;
         }
 
+        private static void GetAssetBundleNameAndVariantByReservedVariants(string originAssetBundleName, out string assetBundleName, out string assetBundleVariant)
+        {
+            assetBundleName = originAssetBundleName;
+            assetBundleVariant = "";
 
+            string extension = Path.GetExtension(assetBundleName);
+            if (!string.IsNullOrEmpty(extension))
+            {
+                extension = extension.Substring(1);
+                if (ReservedVariants.Contains(extension))
+                {
+                    assetBundleName = Path.Combine(Path.GetDirectoryName(assetBundleName), Path.GetFileNameWithoutExtension(assetBundleName));
+                    assetBundleVariant = extension;
+                }
+            }
+        }
 
     }
 
