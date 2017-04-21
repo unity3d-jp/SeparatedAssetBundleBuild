@@ -13,6 +13,7 @@ Unity 5.5にて、ビルド対象のAssetBundle数が増えれば増えるほど
 
 Issue Tracker:<br />
 https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building-time-when-building-multiple-small-asset-bundles<br />
+(こちらの問題は、Unity 5.5.3p2/5.6.0p2にて修正されました。)
 
 ## このプロジェクトについて
 このプロジェクトは、"BuildPipeline.BuildAssetBundles"を可能な限り分割して呼び出す事でビルド時間を短縮するためのプロジェクトです。
