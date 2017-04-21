@@ -11,6 +11,7 @@ Graph1.releation between the number of AssetBundles and building time<br />
 
 Issue Tracker:<br />
 https://issuetracker.unity3d.com/issues/drastically-longer-asset-bundle-building-time-when-building-multiple-small-asset-bundles<br />
+(This issue was fixed at Unity 5.5.3p2/5.6.0p2)
 
 ## about this
 This is a workaround project.<br />
